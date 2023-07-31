@@ -1,24 +1,28 @@
 import {useEffect, useState} from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
+
 function BotsPage() {
   const [bots,setBots]=useState([])
-//API data fetch
+
 useEffect(()=>{
   fetch("http://localhost:3000/bots")
 		.then((res) => res.json())
 		.then((data) => setBots(data));
 },[])
+
 const updateBot=(id)=>{
   {
     setBots(bots.map(bot => id === bot.id ? {...bot, isAdded:true} : bot))
   }
 }
+
 const removeBot= (id)=>{
   {
     setBots(bots.map(bot => id === bot.id ? {...bot, isAdded:false} : bot))
   }
 }
+
 const deleteBot=(id) => {
   fetch(`http://localhost:3000/bots/${id}`, {
 		method: "DELETE",
@@ -26,6 +30,7 @@ const deleteBot=(id) => {
 		setBots((previousData) => previousData.filter((bot) => bot.id !== id))
 	);
 }
+
 return (
 	<div>
 		<h1> `Bot Battlr` </h1>

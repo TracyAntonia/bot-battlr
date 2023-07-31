@@ -9,7 +9,7 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({bot,handleClick, handleDelete}) {
+function BotCard(bot,handleClick, handleDelete) {
   return (
     <div className="ui separate">
       <div
